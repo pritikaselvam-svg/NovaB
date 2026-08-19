@@ -1,60 +1,167 @@
-NovaBuds
+# 🎧 NovaBuds
 
-A custom headphone concept that explores the intersection of product design and embedded systems. NovaBuds was developed from the ground up, taking the product through concept ideation, hardware design, PCB development, and enclosure design while prioritizing functionality, manufacturability, and user experience. project overview
-![Alt Text](novabudsrender2.png)
-Overview
-NovaBuds is an individual project that challenged me to think beyond electronics and approach a product from a holistic perspective. Instead of designing only the circuitry, I worked on how the product would look, feel, function, and be assembled.
+### An end-to-end headphone concept combining industrial design, ergonomics, embedded electronics and custom PCB development.
 
-The project combines mechanical design, embedded electronics, and product development to demonstrate the complete journey from an idea to a manufacturable concept.
+![NovaB Hero](02_Industrial_Design/Renders/novabudsrender2.png)
 
-Problem Statement
-Commercial headphones are often treated as finished consumer products, making it difficult to understand the engineering and design decisions behind them.
+---
 
-NovaBuds was created to explore what it takes to build a headphone from scratch while balancing:
+## What if I could take a pair of headphones from a concept sketch all the way to the electronics?
 
-Product aesthetics
-User comfort
-Electronic integration
-Component placement
-Manufacturability
-My Role
-This was an individual project where I was responsible for:
+NovaBuds started with that question.
 
-Product ideation and concept development
-CAD enclosure design
-PCB design and component placement
-Embedded electronics integration
-Design iteration and system planning
-Key Features
-Custom headphone enclosure designed in CAD
-Custom PCB designed for the electronic system
-Embedded electronics integration
-Modular product architecture
-Product-focused design process balancing engineering and usability
-Tech Stack
-CAD
-PCB Design
-Embedded Electronics
-C++
-Arduino IDE
-Project Gallery
-Final headphone render CAD model  Internal component layout PCB layout
+What began as a headphone design exercise turned into an exploration of what happens when **industrial design and electrical engineering are developed together**.
 
-What I Learned
-This project strengthened my understanding of product development beyond circuit design.
+I designed the headphone form and ergonomics, developed the earcup and headband in CAD, designed the electronics architecture, built the schematic in KiCad, created a custom-shaped PCB around the product geometry, planned the embedded system and designed the ambient display interface.
 
-Some of the key takeaways include:
+The goal was not just to make a headphone that looked interesting.
 
-Designing hardware around user needs
-Integrating electronics within physical constraints
-Considering manufacturability during product development
-Balancing engineering decisions with product design
-Managing an end-to-end product development workflow
-Future Improvements
-Develop a fully functional prototype
-Improve PCB miniaturization
-Add wireless connectivity and battery management
-Conduct user testing for ergonomics and comfort
-Refine the enclosure for manufacturing
-Status
-🚧 Concept Complete | Hardware Design Complete | Prototype Development Ongoing
+It was to understand what it takes to make the **product, electronics and interaction work as one system.**
+
+---
+
+# ✦ Project Snapshot
+
+| | |
+|---|---|
+| **Project** | NovaBuds |
+| **Type** | Headphone / Wearable Electronics |
+| **Focus** | Industrial Design × Embedded Systems |
+| **CAD** | Onshape |
+| **PCB Design** | KiCad |
+| **MCU** | ESP32-S3-WROOM |
+| **Charging** | BQ24074 |
+| **Regulation** | AP2112K 3.3 V |
+| **Audio** | I²S + MAX98357A |
+| **Sensing** | Hall-effect sensor |
+| **Interface** | TFT ambient display + physical buttons |
+| **PCB** | Custom-shaped |
+| **Status** | Engineering prototype in development |
+
+---
+
+# 01 — The Idea
+
+Most headphone projects begin with either the industrial design or the electronics.
+
+I wanted to explore both at the same time.
+
+The starting point was a wearable form that could accommodate:
+
+- a custom earcup geometry
+- a headband structure
+- a local display
+- physical controls
+- a battery
+- audio electronics
+- a wireless MCU
+- a custom PCB
+
+That immediately created an interesting constraint:
+
+> **The electronics couldn't simply be designed first and placed inside a box afterwards.**
+
+The product geometry had to influence the electronics.
+
+And the electronics had to influence the product geometry.
+
+---
+
+# 02 — Product Direction
+
+NovaBuds is designed around three ideas:
+
+### 01. Product form
+
+A distinctive earcup geometry developed around the human-facing side of the product rather than around a conventional rectangular electronics package.
+
+### 02. Ambient interaction
+
+A small display provides glanceable information such as playback state, battery and connectivity without requiring the user to constantly reach for a phone.
+
+### 03. Integrated engineering
+
+The mechanical enclosure, PCB and interaction system are treated as parts of the same product rather than independent projects.
+
+---
+
+# 03 — From Sketch to CAD
+
+The first iterations were developed through physical sketches and form exploration.
+
+![Concept Sketch](02_Industrial_Design/Sketches/NovaBuds_Concept_Sketch_01.jpg)
+
+The form was then developed in Onshape into the final earcup and headband geometry.
+
+### CAD development
+
+![CAD Isometric](02_Industrial_Design/Renders/NovaBuds_CAD_Isometric.png)
+
+The CAD work focused on:
+
+- earcup geometry
+- headband structure
+- component packaging
+- display placement
+- button placement
+- internal volume
+- PCB integration
+- enclosure transitions
+
+The final assembly was developed as a complete headphone rather than as isolated parts.
+
+---
+
+# 04 — Ergonomics
+
+Because the product is worn directly on the head, the geometry had to be considered from the user's perspective.
+
+The main ergonomic considerations were:
+
+- ear clearance
+- contact surfaces
+- enclosure thickness
+- edge transitions
+- button reach
+- display visibility
+- headband geometry
+- internal component clearance
+
+The controls were positioned on the earcup so that common interactions could be performed without relying entirely on a phone.
+
+The display was treated as an **ambient information surface** rather than a miniature smartphone screen.
+
+> The current geometry is a design exploration. Formal anthropometric studies and physical user testing are planned for future iterations.
+
+---
+
+# 05 — Electronics Architecture
+
+The electronics were designed around an ESP32-S3 as the central controller.
+
+```text
+                         ┌────────────────────┐
+                         │      ESP32-S3      │
+                         │   MCU + Wireless   │
+                         └─────────┬──────────┘
+                                   │
+              ┌────────────────────┼────────────────────┐
+              │                    │                    │
+              ▼                    ▼                    ▼
+         TFT Display           Buttons             Hall Sensor
+              │
+              │
+              └─────────────────────┐
+                                    │
+                                    ▼
+ESP32-S3 ─────── I²S ───────► MAX98357A ───────► Speaker
+
+
+USB-C ───────► BQ24074 ───────► Li-ion Battery
+                    │
+                    ▼
+                 AP2112K
+                    │
+                   3V3
+                    │
+                    └──────► Digital Electronics
