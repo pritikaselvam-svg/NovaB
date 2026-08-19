@@ -1,6 +1,7 @@
 NovaBuds
-A custom headphone concept that explores the intersection of product design and embedded systems. NovaBuds was developed from the ground up, taking the product through concept ideation, hardware design, PCB development, and enclosure design while prioritizing functionality, manufacturability, and user experience. project overview
 
+A custom headphone concept that explores the intersection of product design and embedded systems. NovaBuds was developed from the ground up, taking the product through concept ideation, hardware design, PCB development, and enclosure design while prioritizing functionality, manufacturability, and user experience. project overview
+![Alt Text]("C:\Users\PRITIKA\Downloads\novabudsrender2.png")
 Overview
 NovaBuds is an individual project that challenged me to think beyond electronics and approach a product from a holistic perspective. Instead of designing only the circuitry, I worked on how the product would look, feel, function, and be assembled.
 
