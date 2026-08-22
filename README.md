@@ -89,13 +89,12 @@ The mechanical enclosure, PCB and interaction system are treated as parts of the
 
 The first iterations were developed through physical sketches and form exploration.
 
-![Concept Sketch](02_Industrial_Design/Sketches/NovaBuds_Concept_Sketch_01.jpg)
+
 
 The form was then developed in Onshape into the final earcup and headband geometry.
 
 ### CAD development
 
-![CAD Isometric](02_Industrial_Design/Renders/NovaBuds_CAD_Isometric.png)
 
 The CAD work focused on:
 
